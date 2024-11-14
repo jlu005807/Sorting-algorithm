@@ -1,5 +1,7 @@
 #pragma once
 #include<iostream>
+#include<vector>
+#include<algorithm>
 
 //插入排序,将待排列元素划分为「已排序」和「未排序」两部分，
 //每次从「未排序的」元素中选择一个,按其关键字的大小插插入到「已排序的」元素中的正确位置。
@@ -34,6 +36,31 @@ void Straight_Insertion_Sort(T a[], int n)
 	}
 }
 
+//vector
+template<class T = int>
+void Straight_Insertion_Sort(std::vector<T>& a)
+{
+	size_t n = a.size();
+	//对顺序表L做直接插入排序
+	//数组从零开始，第零个元素已经有序
+	for (int i = 1; i < n; i++)
+	{
+		//记录要插入的元素
+		T key = a[i];
+
+		//从i-1位置往前找位置,同时后移元素
+		int j = i - 1;
+		while (j >= 0 && key < a[j])
+		{
+			//后移
+			a[j + 1] = a[j];
+			j--;
+		}
+
+		//插入
+		a[j + 1] = key;
+	}
+}
 
 //折半插人排序，O(n^2)
 //在已经排序的有序数组里采用二分查找，提高找到插入位置的效率
@@ -70,6 +97,38 @@ void Binary_Insertion_Sort(T a[], int n)
 	}
 }
 
+//vector
+template<class T = int>
+void Binary_Insertion_Sort(std::vector<T>& a)
+{
+	size_t n = a.size();
+	//对顺序表L做折半插入排序
+	for (int i = 1; i < n; i++)
+	{
+		//记录要插入的元素
+		T key = a[i];
+
+		//二分查找位置,在[0,i-1]找
+		int low = 0;
+		int high = i - 1;
+		while (low <= high)
+		{
+			//折半
+			int mid = (low + high) / 2;
+			//更新搜索区间
+			if (key < a[mid])high = mid - 1;
+			else low = mid + 1;
+		}
+
+		//找到插入位置，为high+1
+
+		//后移元素,high+1可以为low
+		for (int j = i - 1; j >= high + 1; j--)a[j + 1] = a[j];
+
+		//插入
+		a[high + 1] = key;
+	}
+}
 
 //希尔排序（英语：Shell sort），O(n*(log(n))^2)，平均时间复杂度和最坏时间复杂度与间距序列的选取有关
 //也称为缩小增量排序法,是插入排序的一种改进版本
@@ -116,6 +175,11 @@ template<class T>
 void ShellSort_C(T a[], int n,int t,int dk[])
 {
 	//dk[]存放着生成好的增量序列
+	//有多种增量序列
+	//希尔增量序列（2^k - 1）
+	//Hibbard增量序列（1, 3, 7, 15, ...）
+	//Sedgewick增量序列（1, 5, 19, 41, ...）
+
 	for (int i = 0; i < t; i++)
 	{
 		Shellinsert_C(a, n, a[i]);
@@ -153,4 +217,34 @@ void ShellSort(T a[], int n)
 	}
 }
 
+//c++版
+template<class T>
+void ShellSort(std::vector<T>& a)
+{
+	size_t n = a.size();
+	//初始化间隔 h，使用 Knuth 序列计算使其小于数组长度的最大值
+	size_t h = 1;
+
+	//生成最大增量
+	while (h < n / 3)
+	{
+		h = 3 * h + 1;
+	}
+
+	//进行希尔排序，逐渐减少间隔 h，直到 h 减小到 1（最后一次遍历）
+	while (h >= 1)
+	{
+		//对每一个间隔为 h 的子数组进行插入排序
+		for (size_t i = h; i < n; i++)
+		{
+			//将 a[i] 插入到其对应的子数组中的正确位置
+			for (size_t j = i; j >= h && a[j] < a[j - h]; j -= h)
+			{
+				std::swap(a[j], a[j - h]);//类似后移
+			}
+		}
+		// 缩小间隔，使 h 逐渐减小，最终变为 1
+		h = h / 3;
+	}
+}
 

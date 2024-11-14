@@ -6,5 +6,39 @@
 //基数排序、计数排序、插入排序、冒泡排序、归并排序是稳定排序。
 //选择排序、堆排序、快速排序、希尔排序不是稳定排序。
 
+#include"Insertion_sort.h"
+#include"random_array.h"
+
+void Test_InsertSort()
+{
+	random_array m_random;
+
+	std::vector<int> arr = m_random.generateRandomArray();
+	std::cout << "Original array: ";
+	m_random.printArray(arr);
 
 
+    // 进行排序并输出
+    std::vector<int> arr1 = arr;
+    Straight_Insertion_Sort(arr1);
+    std::cout << "Sorted by Straight Insertion Sort: ";
+    m_random.printArray(arr1);
+
+    std::vector<int> arr2 = arr;
+    Binary_Insertion_Sort(arr2);
+    std::cout << "Sorted by Binary Insertion Sort:   ";
+    m_random.printArray(arr2);
+
+    std::vector<int> arr3 = arr;
+    ShellSort(arr3);
+    std::cout << "Sorted by Shell Sort:              ";
+    m_random.printArray(arr3);
+}
+
+
+int main()
+{
+    Test_InsertSort();
+
+    system("Pause");
+}

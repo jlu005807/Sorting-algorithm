@@ -23,5 +23,11 @@
     <ClInclude Include="Insertion_sort.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="random_array.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Swap_Sort.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
