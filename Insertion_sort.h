@@ -16,7 +16,7 @@ template<class T=int>
 void Straight_Insertion_Sort(T a[], int n)
 {
 	//对顺序表L做直接插入排序
-	//数组从零开始，第零个元素已经有序
+	//数组从0开始，第零个元素已经有序,所以从1开始排序
 	for (int i = 1; i < n; i++)
 	{
 		//记录要插入的元素
