@@ -3,4 +3,6 @@ D:\Visual Studio 2022\source\repos\Sorting_algorithm\Sorting_algorithm\main.cpp(
 D:\Visual Studio 2022\source\repos\Sorting_algorithm\Sorting_algorithm\main.cpp(75,81): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
 D:\Visual Studio 2022\source\repos\Sorting_algorithm\Sorting_algorithm\main.cpp(81,66): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
 D:\Visual Studio 2022\source\repos\Sorting_algorithm\Sorting_algorithm\main.cpp(87,63): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+  Selection_Sort.cpp
+  正在生成代码...
   Sorting_algorithm.vcxproj -> D:\Visual Studio 2022\source\repos\Sorting_algorithm\x64\Debug\Sorting_algorithm.exe

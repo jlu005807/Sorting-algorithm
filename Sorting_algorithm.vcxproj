@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Selection_Sort.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Insertion_sort.h" />
