@@ -2,6 +2,7 @@
 #include<iostream>
 #include<random>
 #include<vector>
+#include"Selection_Sort.h"//实现内省排序
 
 //交换排序的基本思想是：两两比较待排序记录的关键字，
 //一旦发现两个记录不满足次序要求时则进行交换，直到整个序列全部满足要求为止。
@@ -583,5 +584,55 @@ void Quick_Insert_Sort(T *a, int n)
 //内省排序
 //内省排序（英语：Introsort 或 Introspective sort）是快速排序和 堆排序 的结合
 //内省排序将快速排序的最大递归深度限制为[log2_n]，超过限制时就转换为堆排序。
-//这样既保留了快速排序内存访问的局部性，又可以防止快速排序在某些情况下性能退化为 O(n^2)。
-//暂时不实现
+//这样既保留了快速排序内存访问的局部性，又可以防止快速排序在某些情况下性能退化为 O(n^2)，
+//快速排序在某些情况下性能退化为 O(n^2)又称为快速排序落入陷阱
+
+
+template<class T = int>
+void Introspective_Sort(T* a, int n,int deep)
+{
+	if (n <= 1)return;
+
+	//判断快速排序是否落入陷阱，并设阈值为2logn
+	if (deep >= 2 * log2(n))
+	{
+		Heap_Sort(a,n);
+		return;
+	}
+
+	//类似三路划分
+	//随机法取基准
+	const T pivot = a[rand() % n];
+
+	// i：当前操作的元素下标
+	int i = 0;
+	// arr[0, left)：存储小于 pivot 的元素
+	int left = 0;
+	// arr[right, len)：存储大于 pivot 的元素
+	int right = n;
+
+	// 完成一趟三路快排，将序列分为：
+	// 小于 pivot 的元素 | 等于 pivot 的元素 | 大于 pivot 的元素
+	while (i < right)//往前遍历
+	{
+		// 小于基准的元素交换到左边同时前移i
+		if (a[i] < pivot)
+		{
+			std::swap(a[i++], a[left++]);
+		}
+		// 大于基准的元素交换到右边同时前移i
+		else if (pivot < a[i])
+		{
+			//新交换过来的元素可能还是大于基准的，因此我们不急于让 i 继续向前遍历。
+			std::swap(a[i], a[--right]);
+		}
+		// 相等的元素直接跳过不操作，只是前移i
+		else i++;
+	}
+
+	Introspective_Sort(a, left,deep+1);
+
+	Introspective_Sort(a + right, n - right,deep+1);
+
+	return;
+}

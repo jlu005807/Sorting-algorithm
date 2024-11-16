@@ -12,11 +12,12 @@ public:
         std::random_device rd;   // 获取随机设备
         std::mt19937 gen(rd());  // 使用 Mersenne Twister 随机数生成器
 
-        // 随机决定数组的大小（例如：随机生成 1 到 20 的数组大小）
-        std::uniform_int_distribution<> size_dis(1, 10);
+        // 随机决定数组的大小
+        std::uniform_int_distribution<> size_dis(20, 50);
         int size = size_dis(gen);
+       
 
-        // 随机决定上下界（例如：随机生成 1 到 50 的最小值和 51 到 100 的最大值）
+        // 随机决定上下界
         std::uniform_int_distribution<> lower_dis(-100, 0);
         std::uniform_int_distribution<> upper_dis(0, 1000);
         int lower = lower_dis(gen);
@@ -39,9 +40,10 @@ public:
         std::random_device rd;   // 获取随机设备
         std::mt19937 gen(rd());  // 使用 Mersenne Twister 随机数生成器
 
-        // 随机决定数组的大小（例如：随机生成 1 到 20 的数组大小）
-        std::uniform_int_distribution<> size_dis(1, 10);
+        // 随机决定数组的大小
+        std::uniform_int_distribution<> size_dis(20, 200);
         int size = size_dis(gen);
+
 
         // 随机决定上下界（例如：随机生成 1 到 50 的最小值和 51 到 100 的最大值）
         std::uniform_int_distribution<> lower_dis(-100, 0);

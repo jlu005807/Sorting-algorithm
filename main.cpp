@@ -8,6 +8,7 @@
 
 #include"Insertion_sort.h"
 #include"Swap_Sort.h"
+#include"Selection_Sort.h"
 #include"random_array.h"
 
 //测试插入排序
@@ -16,24 +17,24 @@ void Test_InsertSort()
 	random_array m_random;
 
 	std::vector<int> arr = m_random.generateRandomVector();
-	std::cout << "Original array: ";
+    std::cout << "Original array: " << std::endl;
 	printArray(arr);
     std::sort(arr.begin(),arr.end());
 
     // 进行排序并输出
     std::vector<int> arr1 = arr;
     Straight_Insertion_Sort(arr1);
-    std::cout << "Sorted by Straight Insertion Sort: ";
+    std::cout << "Sorted by Straight Insertion Sort: " << std::endl;
     printArray(arr1);
 
     std::vector<int> arr2 = arr;
     Binary_Insertion_Sort(arr2);
-    std::cout << "Sorted by Binary Insertion Sort:   ";
+    std::cout << "Sorted by Binary Insertion Sort:   " << std::endl;
     printArray(arr2);
 
     std::vector<int> arr3 = arr;
     ShellSort(arr3);
-    std::cout << "Sorted by Shell Sort:              ";
+    std::cout << "Sorted by Shell Sort:              " << std::endl;
     printArray(arr3);
 }
 
@@ -101,8 +102,43 @@ void Test_SwapSort()
     Quick_Insert_Sort(arrayForQuickInsertSort.data(), size);
     printArray(arrayForQuickInsertSort.data(), size);
 
+    // 测试内省排序
+    std::vector<int> arrayIntrospectiveSort = p;
 
-    
+    // 调用内省排序，初始深度为 0
+    Introspective_Sort(arrayIntrospectiveSort.data(), p.size(), 0);
+
+    std::cout << "\nIntrospective Sort Result:" << std::endl;
+    printArray(arrayIntrospectiveSort);
+
+}
+
+void Test_Selection_Sort()
+{
+    random_array m_random;
+    auto p = m_random.generateRandomVector();
+
+    // 打印原始数组
+    std::cout << "Original Array:" << std::endl;
+    printArray(p);
+    int size = p.size();
+
+    // 测试简单选择排序
+    int* simple_selection_sorted=new int[size];
+    std::copy(std::begin(p), std::end(p), simple_selection_sorted);
+    Simple_Selection_Sort(simple_selection_sorted, size);
+
+    std::cout << "\nSimple Selection Sort Result:" << std::endl;
+    printArray(simple_selection_sorted, size);
+
+    // 测试堆排序
+    int* heap_sorted = new int[size];
+    std::copy(std::begin(p), std::end(p), heap_sorted);
+    Heap_Sort(heap_sorted,size);
+
+    std::cout << "\nHeap Sort Result:" << std::endl;
+    printArray(heap_sorted, size);
+
 }
 
 
@@ -113,6 +149,10 @@ int main()
     system("Pause");
 
     Test_SwapSort();
+
+    system("Pause");
+
+    Test_Selection_Sort();
 
     system("Pause");
 
