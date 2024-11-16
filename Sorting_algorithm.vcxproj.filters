@@ -32,5 +32,8 @@
     <ClInclude Include="Swap_Sort.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Merging_Sort.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

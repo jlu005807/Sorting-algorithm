@@ -9,6 +9,7 @@
 #include"Insertion_sort.h"
 #include"Swap_Sort.h"
 #include"Selection_Sort.h"
+#include"Merging_Sort.h"
 #include"random_array.h"
 
 //≤‚ ‘≤Â»Î≈≈–Ú
@@ -141,6 +142,34 @@ void Test_Selection_Sort()
 
 }
 
+void Test_MergeSort()
+{
+    random_array m_random;
+    auto p = m_random.generateRandomVector();
+
+    // ¥Ú”°‘≠ º ˝◊È
+    std::cout << "Original Array:" << std::endl;
+    printArray(p);
+    int size = p.size();
+
+  
+
+    // ≤‚ ‘µ›πÈπÈ≤¢≈≈–Ú
+    std::vector<int> arrayRecursive = p;
+    Merge_Sort(arrayRecursive.data(), 0, arrayRecursive.size());
+    std::cout << "\nRecursive Merge Sort Result:" << std::endl;
+    printArray(arrayRecursive.data(), arrayRecursive.size());
+
+    // ≤‚ ‘∑«µ›πÈπÈ≤¢≈≈–Ú
+    std::vector<int> arrayNonRecursive = p;
+    Merge_sort(arrayNonRecursive.data(), arrayNonRecursive.size());
+    std::cout << "\nNon-Recursive Merge Sort Result:" << std::endl;
+    printArray(arrayNonRecursive.data(), arrayNonRecursive.size());
+
+
+
+}
+
 
 int main()
 { 
@@ -156,4 +185,7 @@ int main()
 
     system("Pause");
 
+    Test_MergeSort();
+
+    system("Pause");
 }
