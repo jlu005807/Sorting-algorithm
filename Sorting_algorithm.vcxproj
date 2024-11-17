@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClInclude Include="Insertion_sort.h" />
     <ClInclude Include="Merging_Sort.h" />
+    <ClInclude Include="Radix_Sort.h" />
     <ClInclude Include="random_array.h" />
     <ClInclude Include="Swap_Sort.h" />
   </ItemGroup>

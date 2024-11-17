@@ -35,5 +35,8 @@
     <ClInclude Include="Merging_Sort.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Radix_Sort.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
