@@ -1,1 +1,17 @@
-﻿  Sorting_algorithm.vcxproj -> D:\Visual Studio 2022\source\repos\Sorting_algorithm\x64\Debug\Sorting_algorithm.exe
+﻿  main.cpp
+D:\Visual Studio 2022\source\repos\Sorting_algorithm\Sorting_algorithm\main.cpp(52,14): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Visual Studio 2022\source\repos\Sorting_algorithm\Sorting_algorithm\main.cpp(78,81): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\Visual Studio 2022\source\repos\Sorting_algorithm\Sorting_algorithm\main.cpp(84,66): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\Visual Studio 2022\source\repos\Sorting_algorithm\Sorting_algorithm\main.cpp(90,63): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\Visual Studio 2022\source\repos\Sorting_algorithm\Sorting_algorithm\main.cpp(111,61): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\Visual Studio 2022\source\repos\Sorting_algorithm\Sorting_algorithm\main.cpp(126,14): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Visual Studio 2022\source\repos\Sorting_algorithm\Sorting_algorithm\main.cpp(154,14): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Visual Studio 2022\source\repos\Sorting_algorithm\Sorting_algorithm\main.cpp(160,61): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\Visual Studio 2022\source\repos\Sorting_algorithm\Sorting_algorithm\main.cpp(162,58): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\Visual Studio 2022\source\repos\Sorting_algorithm\Sorting_algorithm\main.cpp(168,64): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\Visual Studio 2022\source\repos\Sorting_algorithm\Sorting_algorithm\main.cpp(180,14): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Visual Studio 2022\source\repos\Sorting_algorithm\Sorting_algorithm\Merging_Sort.h(46,11): warning C4244: “初始化”: 从“__int64”转换到“int”，可能丢失数据
+D:\Visual Studio 2022\source\repos\Sorting_algorithm\Sorting_algorithm\Merging_Sort.h(47,11): warning C4244: “初始化”: 从“__int64”转换到“int”，可能丢失数据
+  Selection_Sort.h
+  正在生成代码...
+  Sorting_algorithm.vcxproj -> D:\Visual Studio 2022\source\repos\Sorting_algorithm\x64\Debug\Sorting_algorithm.exe

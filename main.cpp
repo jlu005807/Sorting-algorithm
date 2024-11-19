@@ -10,6 +10,7 @@
 #include"Swap_Sort.h"
 #include"Selection_Sort.h"
 #include"Merging_Sort.h"
+#include"Radix_Sort.h"
 #include"random_array.h"
 
 //≤‚ ‘≤Â»Î≈≈–Ú
@@ -166,10 +167,39 @@ void Test_MergeSort()
     std::cout << "\nNon-Recursive Merge Sort Result:" << std::endl;
     printArray(arrayNonRecursive.data(), arrayNonRecursive.size());
 
-
-
 }
 
+void Test_Radix_Sort()
+{
+    random_array m_random;
+    auto p = m_random.generateRandomVector();
+
+    // ¥Ú”°‘≠ º ˝◊È
+    std::cout << "Original Array:" << std::endl;
+    printArray(p);
+    int size = p.size();
+
+    // ≤‚ ‘º∆ ˝≈≈–Ú
+    std::vector<int> arrayCounting = p;
+    Counting_Sort(arrayCounting.data(), size);
+    std::cout << "\nCounting Sort Result:" << std::endl;
+    printArray(arrayCounting);
+
+    // ≤‚ ‘Õ∞≈≈–Ú
+    std::vector<int> arrayBucket = p;
+    Bucket_Sort(arrayBucket.data(), size);
+    std::cout << "\nBucket Sort Result:" << std::endl;
+    printArray(arrayBucket);
+
+    // ≤‚ ‘MSDª˘ ˝≈≈–Ú
+    std::vector<uint32_t> arrayMSD(p.begin(), p.end());
+    MSD_radix_sort(arrayMSD.data(), arrayMSD.data() + arrayMSD.size());
+    std::cout << "\nMSD Radix Sort Result:" << std::endl;
+    printArray(arrayMSD);
+
+    //∂‘”⁄◊÷∑˚¥Æ∫ÕLSDª˘ ˝≈≈–Ú≤ªøº¬«≤‚ ‘
+
+}
 
 int main()
 { 
@@ -186,6 +216,10 @@ int main()
     system("Pause");
 
     Test_MergeSort();
+
+    system("Pause");
+
+    Test_Radix_Sort();
 
     system("Pause");
 }

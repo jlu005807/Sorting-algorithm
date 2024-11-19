@@ -46,8 +46,8 @@ public:
 
 
         // 随机决定上下界（例如：随机生成 1 到 50 的最小值和 51 到 100 的最大值）
-        std::uniform_int_distribution<> lower_dis(-100, 0);
-        std::uniform_int_distribution<> upper_dis(0, 1000);
+        std::uniform_int_distribution<> lower_dis(0, 10);
+        std::uniform_int_distribution<> upper_dis(10, 1000);
         int lower = lower_dis(gen);
         int upper = upper_dis(gen);
 
@@ -65,6 +65,15 @@ public:
 
 // 打印数组
 void printArray(const std::vector<int>& arr)
+{
+    for (const int& num : arr) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+}
+
+// 打印数组
+void printArray(const std::vector<uint32_t>& arr)
 {
     for (const int& num : arr) {
         std::cout << num << " ";

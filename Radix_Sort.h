@@ -54,7 +54,7 @@ void Counting_Sort(T* elem,int n)
 
 
 	//临时数组
-	T* sorted_a = new T[capcity];
+	T* sorted_a = new T[n];
 	for (int i = n - 1; i >= 0; i--)
 	{
 		//如果有重复元素则位置减一
@@ -135,7 +135,7 @@ void Bucket_Sort(T* elem, int n)
 
 }
 
-//MSD 基数排序
+//MSD 基数排序,
 //基于 k - 关键字元素的比较方法，可以想到：先比较所有元素的第 1 关键字，就可以确定出各元素大致的大小关系；
 //然后对 具有相同第 1 关键字的元素，再比较它们的第 2 关键字……以此类推。
 
@@ -150,7 +150,7 @@ using u32 = uint32_t;  // 简化 uint32_t 类型为 u32
 using u64 = uint64_t;  // 简化 uint64_t 类型为 u64
 using u32ptr = u32*;   // 定义 u32 的指针类型
 
-// 实现 MSD（Most Significant Digit）基数排序,对自然数排序
+// 实现 MSD（Most Significant Digit）基数排序,对自然数！！！排序
 void MSD_radix_sort(u32ptr first, u32ptr last) 
 {
 	static constexpr u32 maxlogW = 32;  // 数据位宽最大为 32 位
@@ -168,6 +168,8 @@ void MSD_radix_sort(u32ptr first, u32ptr last)
 
 	// 定义栈节点类型：表示子数组范围和当前处理的位移
 	using node = tuple<u32ptr, u32ptr, u32>;
+
+	//排序的
 	stack<node, vector<node>> s;
 
 	// 初始将整个数组加入栈，位移为最高有效位起始
@@ -215,8 +217,7 @@ void MSD_radix_sort(u32ptr first, u32ptr last)
 
 			for (u32 value = 1; value < W; ++value)
 			{
-				s.push(make_tuple(begin + cnt[value - 1], begin + cnt[value],
-					shift - logW));  // 其他范围
+				s.push(make_tuple(begin + cnt[value - 1], begin + cnt[value], shift - logW)); // 其他范围
 			}
 		}
 
