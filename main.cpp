@@ -59,6 +59,18 @@ void Test_SwapSort()
     printArray(std::vector<int>(bubbleArray, bubbleArray + size));  // 打印排序后的数组
     delete[] bubbleArray;  // 释放内存
 
+    //冒泡排序改进
+    std::cout << "\nBubble Sort（Modify) Test:" << std::endl;
+    std::vector<int> v = p;
+    Bubble_Sort_modify(v.data(), v.size());
+    printArray(v);
+
+    //测试双向冒泡排序
+    std::cout << "\nDouble Bubble Sort Test:" << std::endl;
+    std::vector<int> v1 = p;
+    Bubble_Sort_modify(v1.data(), v1.size());
+    printArray(v1);
+
     // 快速排序测试
     std::cout << "\nQuick Sort C Test:" << std::endl;
     int* quickArray = new int[size];

@@ -39,32 +39,67 @@ void Bubble_Sort(T a[], int n)
 	}
 }
 
+//冒泡排序的改进
+//一趟比较中，当比较结束，发现从某个位置t开始不再交换，则说明t及以后的记录有序
+//从而下一趟比较进行到t即可
 template<class T = int>
-void Bubble_Sort(std::vector<T> a)
+void Bubble_Sort_modify(T a[], int n)
 {
-	size_t n = a.size();
-	//设置交换标识,开始时假设有交换
-	bool flag = true;
+	if (n <= 1)return;
 
-	//只要一趟起泡排序有交换就继续
-	while (flag)
+	//停止标识
+	int stop = n-1;
+	while (stop!=0)
 	{
-		//假设无交换
-		flag = false;
-
-		//遍历找逆序
-		for (size_t i = 0; i < n - 1; i++)
+		//一趟冒泡排序记录交换的最后位置，-1表示无记录交换
+		int t = 0;
+		for (int i = 0; i < stop; i++)
 		{
-			//有逆序则交换
-			if (a[i] < a[i + 1])
+			if (a[i + 1] < a[i])
+			{
+				//交换并记录交换位置
+				std::swap(a[i], a[i + 1]);
+				t = i;
+			}
+		}
+
+		stop = t;
+	}
+}
+//双向冒泡排序，上浮和下沉交替进行
+template<class T=int>
+void Double_Bubble_Sort(T* a, int n)
+{
+	//上浮和下沉的区域
+	int left = 0;
+	int right = n - 1;
+
+	bool swapped = true;
+
+	while(left <= right && swapped)
+	{
+		//上浮，大数往后移
+		for (int i = left; i < right; i++)
+		{
+			if (a[i + 1] < a[i])
 			{
 				std::swap(a[i], a[i + 1]);
-				//重置标识
-				flag = true;
+				right = i;
+			}
+		}
+
+		//下沉，小数往下
+		for (int i = right; i > left; i--)
+		{
+			if (a[i] < a[i - 1])
+			{
+				std::swap(a[i], a[i - 1]);
+				left = i;
 			}
 		}
 	}
 }
+
 
 //快速排序(QuickSort) 是由冒泡排序改进而得的，平均O(nlogn)
 //快速排序的工作原理是通过 分治 的方式来将一个数组排序
