@@ -78,12 +78,15 @@ void Double_Bubble_Sort(T* a, int n)
 
 	while(left <= right && swapped)
 	{
+		swapped = false;
+
 		//上浮，大数往后移
 		for (int i = left; i < right; i++)
 		{
 			if (a[i + 1] < a[i])
 			{
 				std::swap(a[i], a[i + 1]);
+				swapped = true;
 				right = i;
 			}
 		}
@@ -94,6 +97,7 @@ void Double_Bubble_Sort(T* a, int n)
 			if (a[i] < a[i - 1])
 			{
 				std::swap(a[i], a[i - 1]);
+				swapped = true;
 				left = i;
 			}
 		}
